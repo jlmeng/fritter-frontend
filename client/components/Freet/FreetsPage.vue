@@ -17,9 +17,9 @@
       <article>
         <h3>
           <router-link to="/login">
-            Sign in
+            Sign in 
           </router-link>
-          to create, edit, and delete freets.
+          &nbsp to create, edit, and delete freets.
         </h3>
       </article>
     </section>
