@@ -29,6 +29,7 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
 * {
   box-sizing: border-box;
 }
@@ -40,10 +41,13 @@ body {
   padding: 0;
   margin: 0;
   font-size: 1.2em;
+  font-family: 'Lato', sans-serif;
 }
 
 main {
   padding: 0 5em 5em;
+  max-width: 2000px;
+  min-width: 1000px;
 }
 
 .alerts {
@@ -73,5 +77,9 @@ main {
 
 .alerts .success {
     background-color: rgb(45, 135, 87);
+}
+
+header {
+  color: #1b72c4;
 }
 </style>

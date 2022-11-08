@@ -1,12 +1,14 @@
 <!-- Default page that also displays freets -->
 
 <template>
+  <div class="page">
   <main>
     <section v-if="$store.state.username">
       <header>
-        <h2>Welcome @{{ $store.state.username }}</h2>
+        <h2>Welcome @{{ $store.state.username }}!</h2>
       </header>
       <CreateFreetForm />
+      <CreateTagForm />
     </section>
     <section v-else>
       <header>
@@ -31,7 +33,8 @@
             </span>
           </h2>
         </div>
-        <div class="right">
+        <section v-if="!$store.state.username">
+          <div class="right">
           <GetFreetsForm
             ref="getFreetsForm"
             value="author"
@@ -39,15 +42,26 @@
             button="🔄 Get freets"
           />
         </div>
+        </section>
       </header>
+      <section v-if="$store.state.username">
+          <div>
+          <FilterComponent></FilterComponent>
+          </div>
+        </section>
+
+        
       <section
         v-if="$store.state.freets.length"
       >
-        <FreetComponent
+        <div class="box">
+          <FreetComponent
           v-for="freet in $store.state.freets"
           :key="freet.id"
           :freet="freet"
         />
+        </div>
+        
       </section>
       <article
         v-else
@@ -56,18 +70,21 @@
       </article>
     </section>
   </main>
+  </div>
 </template>
 
 <script>
 import FreetComponent from '@/components/Freet/FreetComponent.vue';
 import CreateFreetForm from '@/components/Freet/CreateFreetForm.vue';
 import GetFreetsForm from '@/components/Freet/GetFreetsForm.vue';
+import CreateTagForm from '@/components/Tag/CreateTagForm.vue';
+import FilterComponent from '@/components/Filter/FilterComponent.vue';
 
 export default {
   name: 'FreetPage',
-  components: {FreetComponent, GetFreetsForm, CreateFreetForm},
+  components: {FreetComponent, GetFreetsForm, CreateFreetForm, CreateTagForm, FilterComponent},
   mounted() {
-    this.$refs.getFreetsForm.submit();
+    // this.$refs.getFreetsForm.submit();
   }
 };
 </script>
@@ -93,4 +110,19 @@ section .scrollbox {
   padding: 3%;
   overflow-y: scroll;
 }
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.page {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
 </style>
+

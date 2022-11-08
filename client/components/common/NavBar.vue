@@ -42,7 +42,7 @@
 <style scoped>
 nav {
     padding: 1vw 2vw;
-    background-color: #ccc;
+    background-color: #B3D7FA;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -52,6 +52,7 @@ nav {
 .title {
     font-size: 32px;
     margin: 0 5px;
+    margin-left: 15px;
 }
 
 img {
@@ -78,4 +79,15 @@ img {
 .alerts {
     width: 25%;
 }
+
+a:link { text-decoration: none; color: white}
+
+
+a:visited { text-decoration: none; color: white}
+
+
+a:hover { text-decoration: none; color: #71B7F9}
+
+
+a:active { text-decoration: none; color: white}
 </style>

@@ -14,6 +14,9 @@ export type Freet = {
   dateCreated: Date;
   content: string;
   dateModified: Date;
+  views: number;
+  tags: Types.ObjectId[];
+  flags: Types.ObjectId[];
 };
 
 export type PopulatedFreet = {
@@ -22,6 +25,8 @@ export type PopulatedFreet = {
   dateCreated: Date;
   content: string;
   dateModified: Date;
+  tags: Types.ObjectId[];
+  flags: Types.ObjectId[];
 };
 
 // Mongoose schema definition for interfacing with a MongoDB table
@@ -49,6 +54,21 @@ const FreetSchema = new Schema<Freet>({
   dateModified: {
     type: Date,
     required: true
+  },
+  // Add views field to the schema
+  views: {
+    type: Number,
+    default: 0
+  },
+  // Add tags field to the schema
+  tags: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Freet'
+  },
+  // Add flags field to the schema
+  flags: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Freet'
   }
 });
 

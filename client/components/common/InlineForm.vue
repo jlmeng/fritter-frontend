@@ -53,5 +53,6 @@ form {
 input {
     padding: 0 5px;
     min-width: 200px;
+    margin-right: 5px;
 }
 </style>

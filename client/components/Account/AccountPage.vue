@@ -2,6 +2,8 @@
 <!-- User should be authenticated in order to see this page -->
 
 <template>
+  <div class="page">
+
   <main>
     <section>
       <header>
@@ -18,6 +20,8 @@
       <DeleteAccountForm />
     </section>
   </main>
+</div>
+
 </template>
 
 <script>
@@ -36,3 +40,12 @@ export default {
   }
 };
 </script>
+
+<style>
+.page {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+</style>

@@ -11,15 +11,23 @@
         v-for="field in fields"
         :key="field.id"
       >
-        <label :for="field.id">{{ field.label }}:</label>
+        <!-- <label :for="field.id">{{ field.label }}:</label> -->
         <textarea
           v-if="field.id === 'content'"
           :name="field.id"
           :value="field.value"
+          :placeholder="'Say something!'"
+          @input="field.value = $event.target.value"
+        />
+        <textarea
+          v-if="field.id === 'tag'"
+          :name="field.id"
+          :value="field.value"
+          :placeholder="'Keep it short and sweet'"
           @input="field.value = $event.target.value"
         />
         <input
-          v-else
+          v-if="field.id !== 'content' && field.id !== 'tag'"
           :type="field.id === 'password' ? 'password' : 'text'"
           :name="field.id"
           :value="field.value"
@@ -30,11 +38,14 @@
     <article v-else>
       <p>{{ content }}</p>
     </article>
-    <button
+    <div>
+      <button
       type="submit"
     >
       {{ title }}
     </button>
+    </div>
+    
     <section class="alerts">
       <article
         v-for="(status, alert, index) in alerts"
@@ -118,12 +129,28 @@ export default {
 <style scoped>
 form {
   border: 1px solid #111;
+  border-radius: 10px;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 14px;
   position: relative;
+  text-align: center;
+}
+
+button {
+  background-color: #71B7F9;
+  border: 0px;
+  border-radius: 5px;
+  color: white;
+  padding: 0.5rem;
+  width: max-content;
+  font-size: 0.9rem;
+}
+
+button:hover {
+  background-color: #8fc9ff;
 }
 
 article > div {
@@ -147,5 +174,6 @@ form h3 {
 textarea {
    font-family: inherit;
    font-size: inherit;
+   font-style: italic;
 }
 </style>

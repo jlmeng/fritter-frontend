@@ -11,6 +11,8 @@ const store = new Vuex.Store({
   state: {
     filter: null, // Username to filter shown freets by (null = show all)
     freets: [], // All freets created in the app
+    tags: [],
+    flags: [],
     username: null, // Username of the logged in user
     alerts: {} // global success/error messages encountered during submissions to non-visible forms
   },
@@ -52,6 +54,35 @@ const store = new Vuex.Store({
       const url = state.filter ? `/api/users/${state.filter}/freets` : '/api/freets';
       const res = await fetch(url).then(async r => r.json());
       state.freets = res;
+    },
+    async refreshTags(state) {
+      /**
+       * Request the server for the currently available tags.
+       */
+      const url = '/api/tags';
+      const res = await fetch(url).then(async r => r.json());
+
+      state.tags = [];
+      for (var tag in res) {
+        console.log(res[tag])
+        state.tags.push({id: res[tag]._id.toString(), content: res[tag].content})
+      }
+      // state.tags = res;
+      console.log("tags", state.tags)
+    },
+    async refreshFlags(state) {
+      /**
+       * Request the server for the currently available tags.
+       */
+      const url = '/api/flags';
+      const res = await fetch(url).then(async r => r.json());
+
+      state.flags = [];
+      for (var flag in res) {
+        console.log(res[flag])
+        state.flags.push({id: res[flag]._id.toString(), source: res[flag].source, challenges: res[flag].challenges})
+      }
+      console.log("flags", state.flags)
     }
   },
   // Store data across page refreshes, only discard on browser close
