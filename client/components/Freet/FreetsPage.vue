@@ -86,6 +86,7 @@ export default {
   mounted() {
     this.$store.state.username ? this.$refs.filterComponent.filterFeed() : this.$refs.getFreetsForm.submit();
     this.$store.commit(`refreshTags`);
+    this.$store.commit(`refreshFlags`);
   }
 };
 </script>
