@@ -2,6 +2,7 @@
 <!-- User should be NOT authenticated in order to see this page -->
 
 <template>
+  <div class="center">
   <main>
     <section>
       <header>
@@ -16,6 +17,7 @@
       <LoginForm />
     </section>
   </main>
+ </div>
 </template>
 
 <script>
@@ -30,3 +32,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+</style>

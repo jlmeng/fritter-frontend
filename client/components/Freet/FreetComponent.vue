@@ -506,6 +506,7 @@ export default {
                 throw new Error(res2.error);
                 }
         this.$store.commit('refreshFreets');
+        this.$store.commit(`refreshFlags`);
 
                 params.callback();
             } catch (e) {
