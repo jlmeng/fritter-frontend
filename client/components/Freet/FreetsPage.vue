@@ -83,10 +83,12 @@ import FilterComponent from '@/components/Filter/FilterComponent.vue';
 export default {
   name: 'FreetPage',
   components: {FreetComponent, GetFreetsForm, CreateFreetForm, CreateTagForm, FilterComponent},
-  mounted() {
-    this.$store.state.username ? this.$refs.filterComponent.filterFeed() : this.$refs.getFreetsForm.submit();
+  beforeMount() {
     this.$store.commit(`refreshTags`);
     this.$store.commit(`refreshFlags`);
+  },
+  mounted() {
+    this.$store.state.username ? this.$refs.filterComponent.filterFeed() : this.$refs.getFreetsForm.submit();
   }
 };
 </script>
