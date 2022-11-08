@@ -85,6 +85,7 @@ export default {
   components: {FreetComponent, GetFreetsForm, CreateFreetForm, CreateTagForm, FilterComponent},
   mounted() {
     this.$store.state.username ? this.$refs.filterComponent.filterFeed() : this.$refs.getFreetsForm.submit();
+    this.$store.commit(`refreshTags`);
   }
 };
 </script>
