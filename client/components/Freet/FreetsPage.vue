@@ -46,7 +46,7 @@
       </header>
       <section v-if="$store.state.username">
           <div>
-          <FilterComponent></FilterComponent>
+          <FilterComponent ref="filterComponent"></FilterComponent>
           </div>
         </section>
 
@@ -84,7 +84,7 @@ export default {
   name: 'FreetPage',
   components: {FreetComponent, GetFreetsForm, CreateFreetForm, CreateTagForm, FilterComponent},
   mounted() {
-    // this.$refs.getFreetsForm.submit();
+    this.$store.state.username ? this.$refs.filterComponent.filterFeed() : this.$refs.getFreetsForm.submit();
   }
 };
 </script>
