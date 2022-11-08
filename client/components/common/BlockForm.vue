@@ -10,6 +10,7 @@
       <div
         v-for="field in fields"
         :key="field.id"
+        class="textboxes"
       >
         <!-- <label :for="field.id">{{ field.label }}:</label> -->
         <textarea
@@ -175,5 +176,9 @@ textarea {
    font-family: inherit;
    font-size: inherit;
    font-style: italic;
+}
+
+.textboxes {
+  margin-bottom: 5px;
 }
 </style>
